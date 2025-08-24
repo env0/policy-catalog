@@ -1,19 +1,20 @@
 package env0.policies.deny_public_s3
 
+# Check for public ACLs on aws_s3_bucket_acl resource
 deny[msg] {
   rc := input.plan.resource_changes[_]
-  rc.type == "aws_s3_bucket"
+  rc.type == "aws_s3_bucket_acl"
   a := rc.change.after
   a.acl == "public-read"
-  msg := sprintf("%s: public S3 bucket (ACL %s)", [rc.address, a.acl])
+  msg := sprintf("%s: public S3 bucket ACL (%s)", [rc.address, a.acl])
 }
 
 deny[msg] {
   rc := input.plan.resource_changes[_]
-  rc.type == "aws_s3_bucket"
+  rc.type == "aws_s3_bucket_acl"
   a := rc.change.after
   a.acl == "public-read-write"
-  msg := sprintf("%s: public S3 bucket (ACL %s)", [rc.address, a.acl])
+  msg := sprintf("%s: public S3 bucket ACL (%s)", [rc.address, a.acl])
 }
 
 deny[msg] {
