@@ -1,0 +1,10 @@
+name: 'Monthly Cost Estimation Policy'
+description: "Enforces cost limits by checking monthly cost estimations and cost increases. Fails if costs exceed configured thresholds and provides warnings for high-cost deployments."
+categories: 
+  - cost-management
+  - governance
+tags: 
+  - cost
+  - budget
+  - terraform
+cloudProvider: 'multi'

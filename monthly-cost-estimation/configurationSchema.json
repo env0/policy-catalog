@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Monthly Cost Estimation Policy Configuration",
+  "type": "object",
+  "properties": {
+    "maxCostIncrease": {
+      "type": "number",
+      "description": "Maximum allowed monthly cost increase in USD before requiring approval",
+      "minimum": 0,
+      "default": 10
+    }
+  },
+  "additionalProperties": false
+}
