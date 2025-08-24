@@ -1,4 +1,4 @@
-package env0.policies.deny_public_s3
+package env0
 
 # Check for public ACLs on aws_s3_bucket_acl resource
 deny[msg] {

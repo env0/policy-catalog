@@ -1,4 +1,4 @@
-package env0.policies.monthly_cost_estimation
+package env0
 
 # Policy to request approval for cost increases above a threshold
 # Default threshold is $10 if not configured
