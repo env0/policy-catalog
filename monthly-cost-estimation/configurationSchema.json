@@ -6,9 +6,9 @@
     "maxCostIncrease": {
       "type": "number",
       "description": "Maximum allowed monthly cost increase in USD before requiring approval",
-      "minimum": 0,
-      "default": 10
+      "minimum": 0
     }
   },
+  "required": ["maxCostIncrease"],
   "additionalProperties": false
 }
