@@ -1,9 +1,9 @@
 package env0
 
 # Policy to request approval for cost increases above a threshold
-# Default threshold is $10 if not configured
+# Default threshold is $5 if not configured
 
-default maxCostIncrease = 10
+default maxCostIncrease = 5
 
 maxCostIncrease = input.policyData.maxCostIncrease {
   input.policyData.maxCostIncrease
