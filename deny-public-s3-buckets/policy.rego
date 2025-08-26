@@ -28,4 +28,9 @@ deny[msg] {
   msg := sprintf("%s: bucket policy allows public access", [rc.address])
 }
 
+allow[msg] {
+	count(input.approvers) >= 1
+	msg := sprintf("Deployment approved by %d approver(s)", [count(input.approvers)])
+}
+
 is_public(p) { p == "*" } else { is_object(p); p.AWS == "*" } else { is_array(p); p[_] == "*" }
