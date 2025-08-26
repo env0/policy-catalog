@@ -7,4 +7,3 @@ tags:
   - cost
   - budget
   - terraform
-cloudProvider: 'multi'
