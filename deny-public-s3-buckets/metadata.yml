@@ -1,0 +1,8 @@
+name: 'Deny Public S3 Buckets'
+description: "Fails if a bucket has a public ACL (public-read/public-read-write) or a bucket policy with Principal '*' and Effect Allow."
+categories:
+  - security
+tags:
+  - aws
+  - s3
+cloudProvider: 'aws'
