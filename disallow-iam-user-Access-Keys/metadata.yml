@@ -1,0 +1,9 @@
+name: 'Disallow IAM User Access Keys'
+description: "Promotes the use of more secure, temporary credentials via IAM roles by forbidding the creation of static user access keys."
+categories:
+  - security
+  - iam
+tags:
+  - iam
+  - authentication
+cloudProvider: 'aws'
