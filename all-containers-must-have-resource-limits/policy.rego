@@ -33,6 +33,14 @@ deny[msg] {
     msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "kubernetes_deployment"
+    container := r.change.after.spec[_].template[_].spec[_].container[_]
+    not container.resources.limits
+    msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
+}
+
 # Check containers in kubernetes_manifest resources - template specs
 deny[msg] {
     r := input.plan.resource_changes[_]
