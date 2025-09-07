@@ -1,11 +1,10 @@
 name: "S3 Buckets Must Have Server-Side Encryption"
 description: "Ensures data at rest in S3 is always encrypted by requiring a server-side encryption configuration."
 categories:
-  - "security"
-  - "compliance"
+  - "Security"
+  - "Compliance"
 tags:
-  - "aws"
-  - "s3"
-  - "encryption"
-  - "server-side-encryption"
+  - "AWS"
+  - "S3"
+  - "Encryption"
 cloudProvider: "aws"
