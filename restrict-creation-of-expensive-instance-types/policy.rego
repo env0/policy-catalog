@@ -1,4 +1,4 @@
-package env0.policy
+package env0
 
 deny[msg] {
     pattern := input.policyData.disallowed_patterns[_]
