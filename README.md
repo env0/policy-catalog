@@ -22,9 +22,9 @@ A YAML file that contains metadata and optional configuration for the policy.
 **Fields:**
 - **name**: Friendly name of the policy template.
 - **description**: Explanation of what the policy does.
-- **categories** *(optional)*: Category of the policy (e.g., cost, security, compliance, best-practice).
+- **categories** *(optional)*: Category of the policy. Supported categories: `Security`, `Networking`, `IAM`, `Compliance`, `Cost`, `Performance`.
 - **tags** *(optional)*: Cloud resources or concepts targeted by the policy.
-- **cloudProvider** *(optional)*: Relevant cloud provider (`aws`, `gcp`, `azure`). Leave blank for multi-cloud.
+- **cloudProvider** *(optional)*: Relevant cloud provider (`aws`, `gcp`, `azure`, `oci`). Leave blank for multi-cloud.
 - **configurationSchema** *(optional)*: Schema describing configuration arguments for the policy.
 
 **Example:**
