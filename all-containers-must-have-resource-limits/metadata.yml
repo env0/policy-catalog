@@ -1,5 +1,5 @@
 name: "All Containers Must Have Resource Limits"
-description: "Ensures that all containers in a Kubernetes deployment have CPU and memory limits set, preventing resource contention and ensuring cluster stability."
+description: "Ensures that all containers in Kubernetes workloads (deployments, statefulsets, daemonsets, jobs, cronjobs, and pods) have CPU and memory limits set, preventing resource contention and ensuring cluster stability."
 categories:
   - "Cost"
 tags:
