@@ -4,6 +4,7 @@
   "type": "object",
   "properties": {
     "disallowed_patterns": {
+      "title": "Disallowed Patterns",
       "type": "array",
       "items": {
         "type": "string"
