@@ -8,7 +8,7 @@
       "items": {
         "type": "string"
       },
-      "description": "List of instance type patterns to disallow (e.g., ['*.metal', 'g5.*'])",
+      "description": "List of instance type patterns to disallow (e.g., [\"*.metal\", \"g5.*\"])",
       "examples": [
         ["*.metal", "g5.*"],
         ["x1e.*", "r5.24xlarge", "m5*.metal"]
