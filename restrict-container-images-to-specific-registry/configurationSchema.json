@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Restrict Container Images to a Specific Registry Configuration",
+  "type": "object",
+  "properties": {
+    "allowed_registries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of approved registry prefixes (e.g., [\"your.registry.io\", \"docker.io/yourorg\"])",
+      "examples": [
+        ["your.registry.io"],
+        ["your.registry.io", "docker.io/yourorg", "gcr.io/yourproject"]
+      ]
+    }
+  },
+  "required": ["allowed_registries"],
+  "additionalProperties": false
+}

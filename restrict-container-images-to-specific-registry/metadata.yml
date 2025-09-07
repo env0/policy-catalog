@@ -1,0 +1,8 @@
+name: "Restrict Container Images to a Specific Registry"
+description: "A supply chain security measure that ensures container images are only pulled from trusted, approved registries."
+categories:
+  - "Security"
+tags:
+  - "Kubernetes"
+  - "Registry"
+cloudProvider: ""
