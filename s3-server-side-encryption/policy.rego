@@ -20,7 +20,8 @@ deny[msg] {
     
     # Check if any rule has null or missing sse_algorithm
     rule := rc.change.after.rule[_]
-    not rule.apply_server_side_encryption_by_default.sse_algorithm
+    encryption_config := rule.apply_server_side_encryption_by_default[_]
+    not encryption_config.sse_algorithm
     
     msg := sprintf("%s: S3 bucket encryption configuration must specify a valid SSE algorithm", [rc.address])
 }
@@ -37,7 +38,8 @@ has_encryption_config(bucket_address) {
     
     # Ensure the encryption config has valid rules
     rule := rc.change.after.rule[_]
-    rule.apply_server_side_encryption_by_default.sse_algorithm
+    encryption_config := rule.apply_server_side_encryption_by_default[_]
+    encryption_config.sse_algorithm
 }
 
 # Helper function to extract bucket name from resource address
