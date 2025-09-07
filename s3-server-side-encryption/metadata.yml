@@ -8,3 +8,4 @@ tags:
   - "S3"
   - "Encryption"
 cloudProvider: "aws"
+terrafomVersions: "> 4.0.0"
