@@ -1,0 +1,10 @@
+name: "Restrict Creation of Expensive Instance Types"
+description: "Prevents accidental or unauthorized provisioning of high-cost instance types, helping to control cloud spend."
+categories:
+  - "Cost"
+  - "Governance"
+tags:
+  - "EC2"
+  - "VM"
+  - "Cost"
+cloudProvider: "aws"

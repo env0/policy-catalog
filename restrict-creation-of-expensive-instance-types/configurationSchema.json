@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Restrict Creation of Expensive Instance Types Configuration",
+  "type": "object",
+  "properties": {
+    "disallowed_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of instance type patterns to disallow (e.g., ['*.metal', 'g5.*'])",
+      "examples": [
+        ["*.metal", "g5.*"],
+        ["x1e.*", "r5.24xlarge", "m5*.metal"]
+      ]
+    }
+  },
+  "required": ["disallowed_patterns"],
+  "additionalProperties": false
+}
