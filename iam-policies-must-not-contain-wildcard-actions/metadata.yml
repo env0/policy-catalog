@@ -1,9 +1,9 @@
 name: "IAM Policies Must Not Contain Wildcard Actions"
 description: 'Enforces the Principle of Least Privilege by disallowing IAM policies with "Action": "*" statements.'
 categories:
-  - security
-  - iam
+  - "Security"
+  - "IAM"
 tags:
-  - iam
-  - least-privilege
+  - "IAM"
+  - "Least Privilege"
 cloudProvider: "aws"
