@@ -4,7 +4,9 @@ package env0
 deny[msg] {
     rc := input.plan.resource_changes[_]
     rc.type == "aws_s3_bucket"
-    rc.change.actions[_] == "create"
+    
+    # Only check buckets that will exist after the change (not being deleted)
+    not is_delete_action(rc.change.actions)
     
     # Check if there's no corresponding server-side encryption configuration
     not has_encryption_config(rc.address)
@@ -12,11 +14,23 @@ deny[msg] {
     msg := sprintf("%s: S3 bucket must have server-side encryption enabled", [rc.address])
 }
 
+# Deny deletion of server-side encryption configurations
+deny[msg] {
+    rc := input.plan.resource_changes[_]
+    rc.type == "aws_s3_bucket_server_side_encryption_configuration"
+    is_delete_action(rc.change.actions)
+    
+    msg := sprintf("%s: Server-side encryption configuration cannot be removed from S3 bucket", [rc.address])
+}
+
 # Deny server-side encryption configurations with null or missing algorithm
 deny[msg] {
     rc := input.plan.resource_changes[_]
     rc.type == "aws_s3_bucket_server_side_encryption_configuration"
-    rc.change.actions[_] == "create"
+    
+    # Only check configs that will exist after the change (not being deleted)
+    not is_delete_action(rc.change.actions)
+    rc.change.after
     
     # Check if any rule has null or missing sse_algorithm
     rule := rc.change.after.rule[_]
@@ -31,6 +45,10 @@ has_encryption_config(bucket_address) {
     rc := input.plan.resource_changes[_]
     rc.type == "aws_s3_bucket_server_side_encryption_configuration"
     
+    # Only consider configs that will exist after the change (not being deleted)
+    not is_delete_action(rc.change.actions)
+    rc.change.after
+    
     # Extract bucket name from addresses to match them
     bucket_name := extract_bucket_name(bucket_address)
     config_bucket_name := extract_bucket_name(rc.address)
@@ -40,6 +58,11 @@ has_encryption_config(bucket_address) {
     rule := rc.change.after.rule[_]
     encryption_config := rule.apply_server_side_encryption_by_default[_]
     encryption_config.sse_algorithm
+}
+
+# Helper function to check if actions include delete
+is_delete_action(actions) {
+    actions[_] == "delete"
 }
 
 # Helper function to extract bucket name from resource address
