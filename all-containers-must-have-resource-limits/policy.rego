@@ -4,32 +4,38 @@ deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "kubernetes_deployment"
     
-    container := get_container(r.change.after)
+    container := r.change.after.spec.template.spec.container[_]
     not container.resources.limits
     
-    msg := sprintf("Container must have resource limits defined. Container: %v", [container.name])
+    msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-get_container(deployment) := container {
-    container := deployment.spec.template.spec.container[_]
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "kubernetes_deployment"
+    
+    container := r.change.after.spec[_].template.spec.container[_]
+    not container.resources.limits
+    
+    msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-get_container(deployment) := container {
-    container := deployment.spec[_].template.spec.container[_]
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "kubernetes_deployment"
+    
+    container := r.change.after.spec.template.spec[_].container[_]
+    not container.resources.limits
+    
+    msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-get_container(deployment) := container {
-    container := deployment.spec.template.spec[_].container[_]
-}
-
-get_container(deployment) := container {
-    container := deployment.spec[_].template[_].spec.container[_]
-}
-
-get_container(deployment) := container {
-    container := deployment.spec[_].template.spec[_].container[_]
-}
-
-get_container(deployment) := container {
-    container := deployment.spec[_].template[_].spec[_].container[_]
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "kubernetes_deployment"
+    
+    container := r.change.after.spec[_].template[_].spec.container[_]
+    not container.resources.limits
+    
+    msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
