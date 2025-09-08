@@ -2,6 +2,9 @@ package env0
 
 # Deny ALB listeners that use outdated TLS security policies
 deny[msg] {
+    # Skip policy validation for destroy operations
+    input.deploymentRequest.type != "destroy"
+    
     rc := input.plan.resource_changes[_]
     rc.type == "aws_lb_listener"
     
@@ -23,6 +26,9 @@ deny[msg] {
 
 # Deny ALB listeners with TLS policy that doesn't meet minimum requirements
 deny[msg] {
+    # Skip policy validation for destroy operations
+    input.deploymentRequest.type != "destroy"
+    
     rc := input.plan.resource_changes[_]
     rc.type == "aws_lb_listener"
     
