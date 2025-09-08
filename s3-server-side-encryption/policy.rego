@@ -2,6 +2,9 @@ package env0
 
 # Deny S3 buckets without server-side encryption configuration
 deny[msg] {
+    # Skip policy validation for destroy operations
+    input.deploymentRequest.type != "destroy"
+    
     rc := input.plan.resource_changes[_]
     rc.type == "aws_s3_bucket"
     
@@ -14,17 +17,27 @@ deny[msg] {
     msg := sprintf("%s: S3 bucket must have server-side encryption enabled", [rc.address])
 }
 
-# Deny deletion of server-side encryption configurations
+# Deny deletion of server-side encryption configurations when bucket is not being deleted
 deny[msg] {
+    # Skip policy validation for destroy operations
+    input.deploymentRequest.type != "destroy"
+    
     rc := input.plan.resource_changes[_]
     rc.type == "aws_s3_bucket_server_side_encryption_configuration"
     is_delete_action(rc.change.actions)
     
-    msg := sprintf("%s: Server-side encryption configuration cannot be removed from S3 bucket", [rc.address])
+    # Check if the corresponding bucket is NOT being deleted
+    bucket_name := extract_bucket_name(rc.address)
+    not is_bucket_being_deleted(bucket_name)
+    
+    msg := sprintf("%s: Server-side encryption configuration cannot be removed unless the S3 bucket is also being deleted", [rc.address])
 }
 
 # Deny server-side encryption configurations with null or missing algorithm
 deny[msg] {
+    # Skip policy validation for destroy operations
+    input.deploymentRequest.type != "destroy"
+    
     rc := input.plan.resource_changes[_]
     rc.type == "aws_s3_bucket_server_side_encryption_configuration"
     
@@ -63,6 +76,15 @@ has_encryption_config(bucket_address) {
 # Helper function to check if actions include delete
 is_delete_action(actions) {
     actions[_] == "delete"
+}
+
+# Helper function to check if a bucket is being deleted
+is_bucket_being_deleted(bucket_name) {
+    rc := input.plan.resource_changes[_]
+    rc.type == "aws_s3_bucket"
+    is_delete_action(rc.change.actions)
+    extracted_name := extract_bucket_name(rc.address)
+    extracted_name == bucket_name
 }
 
 # Helper function to extract bucket name from resource address
