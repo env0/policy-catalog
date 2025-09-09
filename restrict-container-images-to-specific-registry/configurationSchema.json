@@ -4,6 +4,7 @@
   "type": "object",
   "properties": {
     "allowed_registries": {
+      "title": "Allowed Registries",
       "type": "array",
       "items": {
         "type": "string"
