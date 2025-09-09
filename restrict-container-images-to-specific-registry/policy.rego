@@ -158,7 +158,6 @@ deny[msg] {
 
 # Helper function to check if image is from allowed registry
 image_allowed(image) {
-    allowed_registries := ["123456789012.dkr.ecr.us-east-1.amazonaws.com"]
-    registry := allowed_registries[_]
+    registry := input.policyData.allowed_registries[_]
     startswith(image, registry)
 }
