@@ -1,0 +1,9 @@
+name: "Prohibit Use of Default VPC"
+description: "Discourages use of the default VPC to promote intentional, segmented network design."
+categories:
+  - "Security"
+  - "Networking"
+tags:
+  - "VPC"
+  - "Best Practice"
+cloudProvider: "aws"
