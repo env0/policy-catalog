@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "enforcementMode": {
+      "type": "string",
+      "title": "Enforcement Mode",
+      "description": "Whether to monitor or enforce this policy",
+      "enum": ["monitor", "enforce"],
+      "default": "enforce"
+    }
+  },
+  "required": ["enforcementMode"]
+}
