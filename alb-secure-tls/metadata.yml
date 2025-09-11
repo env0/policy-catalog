@@ -10,5 +10,3 @@ tags:
   - "LoadBalancer"
 cloudProvider: "aws"
 terraformVersions: "> 4.0.0"
-configuration:
-  min_tls_policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
