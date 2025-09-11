@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ALB Secure TLS Policy Configuration",
+  "type": "object",
+  "properties": {
+    "min_tls_policy": {
+      "title": "Minimum TLS Policy",
+      "type": "string",
+      "description": "Minimum required TLS security policy for ALB listeners",
+      "default": "ELBSecurityPolicy-TLS-1-2-2017-01",
+      "enum": [
+        "ELBSecurityPolicy-TLS13-1-2-2021-06",
+        "ELBSecurityPolicy-TLS-1-2-2017-01",
+        "ELBSecurityPolicy-TLS-1-2-Ext-2018-06",
+        "ELBSecurityPolicy-FS-2018-06"
+      ]
+    }
+  },
+  "required": ["min_tls_policy"],
+  "additionalProperties": false
+}
