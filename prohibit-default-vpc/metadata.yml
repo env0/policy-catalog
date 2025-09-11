@@ -6,4 +6,5 @@ categories:
 tags:
   - "VPC"
   - "Best Practice"
+  - "EC2"
 cloudProvider: "aws"
