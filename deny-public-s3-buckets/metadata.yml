@@ -1,8 +1,9 @@
-name: 'Deny Public S3 Buckets'
-description: "Fails if a bucket has a public ACL (public-read/public-read-write) or a bucket policy with Principal '*' and Effect Allow."
+name: "Deny Public S3 Buckets"
+description: "Comprehensive S3 public access prevention - denies public ACLs, public bucket policies, and ensures all public access block settings are enabled."
 categories:
   - "Security"
+  - "Networking"
 tags:
-  - "AWS"
   - "S3"
+  - "Data leak"
 cloudProvider: "aws"
