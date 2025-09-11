@@ -28,9 +28,33 @@ deny[msg] {
   msg := sprintf("%s: bucket policy allows public access", [rc.address])
 }
 
-allow[msg] {
-	count(input.approvers) >= 1
-	msg := sprintf("Deployment approved by %d approver(s)", [count(input.approvers)])
+# Check for public access block settings
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "aws_s3_bucket_public_access_block"
+    r.change.after.block_public_acls != true
+    msg := sprintf("%s: S3 bucket must enable 'block_public_acls'", [r.address])
+}
+
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "aws_s3_bucket_public_access_block"
+    r.change.after.block_public_policy != true
+    msg := sprintf("%s: S3 bucket must enable 'block_public_policy'", [r.address])
+}
+
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "aws_s3_bucket_public_access_block"
+    r.change.after.ignore_public_acls != true
+    msg := sprintf("%s: S3 bucket must enable 'ignore_public_acls'", [r.address])
+}
+
+deny[msg] {
+    r := input.plan.resource_changes[_]
+    r.type == "aws_s3_bucket_public_access_block"
+    r.change.after.restrict_public_buckets != true
+    msg := sprintf("%s: S3 bucket must enable 'restrict_public_buckets'", [r.address])
 }
 
 is_public(p) { p == "*" } else { is_object(p); p.AWS == "*" } else { is_array(p); p[_] == "*" }
