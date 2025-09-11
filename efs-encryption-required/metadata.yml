@@ -1,0 +1,9 @@
+name: "EFS File Systems Must Be Encrypted"
+description: "Requires that all Elastic File System (EFS) instances have encryption for data at rest enabled."
+categories:
+  - "Security"
+  - "Compliance"
+tags:
+  - "EFS"
+  - "Encryption"
+cloudProvider: "aws"
