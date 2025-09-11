@@ -69,7 +69,7 @@ deny[msg] {
         not is_delete_action(alb.change.actions)
         alb.change.after
         alb.change.after.load_balancer_type == "application"
-        sg.change.after.id in alb.change.after.security_groups
+        alb.change.after.security_groups[_] == sg.change.after.id
     ]
     
     count(alb_uses_sg) > 0
