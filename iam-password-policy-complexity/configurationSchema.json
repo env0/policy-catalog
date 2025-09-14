@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "title": "IAM Password Policy Complexity Configuration",
-  "description": "Configuration schema for IAM password policy complexity enforcement",
+  "title": "IAM Password Policy Security Configuration",
+  "description": "Configuration schema for comprehensive IAM password policy security enforcement",
   "properties": {
     "min_length": {
       "type": "integer",
@@ -11,8 +11,24 @@
       "minimum": 1,
       "maximum": 128,
       "default": 14
+    },
+    "max_password_age": {
+      "type": "integer",
+      "title": "Maximum Password Age (days)",
+      "description": "Maximum number of days a password can be used before it must be changed",
+      "minimum": 1,
+      "maximum": 1095,
+      "default": 90
+    },
+    "min_password_reuse_prevention": {
+      "type": "integer",
+      "title": "Minimum Password Reuse Prevention",
+      "description": "Minimum number of previous passwords that cannot be reused",
+      "minimum": 1,
+      "maximum": 24,
+      "default": 5
     }
   },
-  "required": ["min_length"],
+  "required": ["min_length", "max_password_age", "min_password_reuse_prevention"],
   "additionalProperties": false
 }
