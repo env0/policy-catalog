@@ -5,7 +5,7 @@ deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "aws_iam_account_password_policy"
     "create" in r.change.actions
-    r.change.after.minimum_password_length < input.policyData.min_length
+    r.change.after.minimum_password_length < input.policyConfiguration.min_length
     msg := "IAM password policy does not meet minimum length requirement."
 }
 
@@ -13,7 +13,7 @@ deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "aws_iam_account_password_policy"
     "update" in r.change.actions
-    r.change.after.minimum_password_length < input.policyData.min_length
+    r.change.after.minimum_password_length < input.policyConfiguration.min_length
     msg := "IAM password policy does not meet minimum length requirement."
 }
 
@@ -90,7 +90,7 @@ deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "aws_iam_account_password_policy"
     "create" in r.change.actions
-    r.change.after.max_password_age > input.policyData.max_password_age
+    r.change.after.max_password_age > input.policyConfiguration.max_password_age
     msg := "IAM password policy max password age exceeds allowed limit."
 }
 
@@ -98,7 +98,7 @@ deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "aws_iam_account_password_policy"
     "update" in r.change.actions
-    r.change.after.max_password_age > input.policyData.max_password_age
+    r.change.after.max_password_age > input.policyConfiguration.max_password_age
     msg := "IAM password policy max password age exceeds allowed limit."
 }
 
@@ -107,7 +107,7 @@ deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "aws_iam_account_password_policy"
     "create" in r.change.actions
-    r.change.after.password_reuse_prevention < input.policyData.min_password_reuse_prevention
+    r.change.after.password_reuse_prevention < input.policyConfiguration.min_password_reuse_prevention
     msg := "IAM password policy password reuse prevention is insufficient."
 }
 
@@ -115,7 +115,7 @@ deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "aws_iam_account_password_policy"
     "update" in r.change.actions
-    r.change.after.password_reuse_prevention < input.policyData.min_password_reuse_prevention
+    r.change.after.password_reuse_prevention < input.policyConfiguration.min_password_reuse_prevention
     msg := "IAM password policy password reuse prevention is insufficient."
 }
 
