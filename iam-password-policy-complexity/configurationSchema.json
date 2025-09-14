@@ -9,26 +9,29 @@
       "title": "Minimum Password Length",
       "description": "The minimum length required for passwords",
       "minimum": 1,
-      "maximum": 128,
-      "default": 14
+      "maximum": 128
     },
     "max_password_age": {
       "type": "integer",
       "title": "Maximum Password Age (days)",
       "description": "Maximum number of days a password can be used before it must be changed",
       "minimum": 1,
-      "maximum": 1095,
-      "default": 90
+      "maximum": 1095
     },
     "min_password_reuse_prevention": {
       "type": "integer",
       "title": "Minimum Password Reuse Prevention",
       "description": "Minimum number of previous passwords that cannot be reused",
       "minimum": 1,
-      "maximum": 24,
-      "default": 5
+      "maximum": 24
+    },
+    "require_user_password_changes": {
+      "type": "boolean",
+      "title": "Require User Password Changes",
+      "description": "Whether users must be allowed to change their passwords",
+      "default": true
     }
   },
-  "required": ["min_length", "max_password_age", "min_password_reuse_prevention"],
+  "required": ["min_length", "max_password_age", "min_password_reuse_prevention", "require_user_password_changes"],
   "additionalProperties": false
 }
