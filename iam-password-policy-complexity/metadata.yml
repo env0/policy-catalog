@@ -1,0 +1,9 @@
+name: "Enforce IAM Password Policy Complexity"
+description: "Ensures new password policies meet complexity requirements (e.g., numbers, symbols) for stronger user credentials."
+categories:
+  - "Security"
+  - "IAM"
+tags:
+  - "IAM"
+  - "Password"
+cloudProvider: "aws"
