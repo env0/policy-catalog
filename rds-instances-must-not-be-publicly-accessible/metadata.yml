@@ -1,0 +1,10 @@
+name: "RDS Instances Must Not Be Publicly Accessible"
+description: "Ensures databases are not exposed directly to the internet, requiring connections through a secure bastion or VPC."
+categories:
+  - "Security"
+  - "Networking"
+tags:
+  - "RDS"
+  - "Database"
+  - "Security"
+cloudProvider: "aws"
