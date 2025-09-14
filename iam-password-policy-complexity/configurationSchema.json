@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "IAM Password Policy Complexity Configuration",
+  "description": "Configuration schema for IAM password policy complexity enforcement",
+  "properties": {
+    "min_length": {
+      "type": "integer",
+      "title": "Minimum Password Length",
+      "description": "The minimum length required for passwords",
+      "minimum": 1,
+      "maximum": 128,
+      "default": 14
+    }
+  },
+  "required": ["min_length"],
+  "additionalProperties": false
+}
