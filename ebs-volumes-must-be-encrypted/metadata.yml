@@ -1,0 +1,10 @@
+name: "EBS Volumes Must Be Encrypted"
+description: "Mandates that all Elastic Block Store (EBS) volumes attached to EC2 instances are encrypted."
+categories:
+  - "Security"
+  - "Compliance"
+tags:
+  - "EBS"
+  - "Encryption"
+  - "Security"
+cloudProvider: "aws"
