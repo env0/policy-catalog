@@ -1,0 +1,12 @@
+name: "Enforce Comprehensive IAM Password Policy Security"
+description: "Ensures IAM password policies meet comprehensive security requirements including complexity, expiration, and reuse prevention for stronger user credentials."
+categories:
+  - "Security"
+  - "IAM"
+  - "Compliance"
+tags:
+  - "IAM"
+  - "Password"
+  - "Security"
+  - "Compliance"
+cloudProvider: "aws"
