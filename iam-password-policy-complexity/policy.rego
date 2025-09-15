@@ -45,11 +45,12 @@ deny[msg] {
     msg := "IAM password policy must require symbols."
 }
 
-# Check for password change allowance
+# Check for password change allowance (conditional based on policy configuration)
 deny[msg] {
     r := input.plan.resource_changes[_]
     r.type == "aws_iam_account_password_policy"
     "create" in r.change.actions or "update" in r.change.actions
+    input.policyConfiguration.require_user_password_changes == true
     not r.change.after.allow_users_to_change_password
     msg := "IAM password policy must allow users to change passwords."
 }
