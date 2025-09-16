@@ -1,5 +1,7 @@
 package env0.policy
 
+import rego.v1
+
 # Deny EC2 instances that are not explicitly placed in a custom VPC
 deny[msg] {
     r := input.plan.resource_changes[_];
