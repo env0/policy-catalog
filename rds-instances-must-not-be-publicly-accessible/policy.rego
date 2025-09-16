@@ -1,5 +1,7 @@
 package env0.policy
 
+import rego.v1
+
 # Deny RDS instances that are publicly accessible
 deny[msg] {
     r := input.plan.resource_changes[_];
