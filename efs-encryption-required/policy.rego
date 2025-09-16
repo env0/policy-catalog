@@ -1,5 +1,8 @@
 package env0.policy
 
+import rego.v1
+
+# Deny EFS file systems that are not encrypted
 deny[msg] {
     r := input.plan.resource_changes[_];
     r.type == "aws_efs_file_system";
