@@ -1,5 +1,6 @@
 name: "RDS Instances Must Not Be Publicly Accessible"
 description: "Ensures databases are not exposed directly to the internet, requiring connections through a secure bastion or VPC."
+explanation: "Protect your databases from internet threats by keeping them in private networks. Prevents direct attacks and data breaches."
 categories:
   - "Security"
   - "Networking"

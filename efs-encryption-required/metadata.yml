@@ -1,5 +1,6 @@
 name: "EFS File Systems Must Be Encrypted"
 description: "Requires that all Elastic File System (EFS) instances have encryption for data at rest enabled."
+explanation: "Secure your shared file storage with automatic encryption. Protects sensitive files from unauthorized access."
 categories:
   - "Security"
   - "Compliance"

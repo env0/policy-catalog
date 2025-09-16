@@ -1,5 +1,6 @@
 name: "IAM Policies Must Not Contain Wildcard Actions"
 description: 'Enforces the Principle of Least Privilege by disallowing IAM policies with "Action": "*" statements.'
+explanation: "Prevent over-privileged access by enforcing specific permissions. Reduces risk of accidental or malicious misuse of excessive privileges."
 categories:
   - "Security"
   - "IAM"

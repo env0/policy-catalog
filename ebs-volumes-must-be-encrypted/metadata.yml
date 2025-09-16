@@ -1,5 +1,6 @@
 name: "EBS Volumes Must Be Encrypted"
 description: "Mandates that all Elastic Block Store (EBS) volumes attached to EC2 instances are encrypted."
+explanation: "Ensure all your data at rest is encrypted. This protects against unauthorized access and helps meet compliance requirements (e.g., HIPAA, GDPR)."
 categories:
   - "Security"
   - "Compliance"
