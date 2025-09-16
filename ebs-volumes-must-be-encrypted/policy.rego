@@ -1,7 +1,5 @@
 package env0
 
-import rego.v1
-
 # Helper function to check if actions include delete
 is_delete_action(actions) if {
 	actions[_] == "delete"
