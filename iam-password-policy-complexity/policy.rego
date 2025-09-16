@@ -1,16 +1,12 @@
 package env0
 
 # Helper function to check if actions include delete
-is_delete_action(actions) = true
-
-if {
+is_delete_action(actions) {
 	actions[_] == "delete"
 }
 
 # Check minimum password length
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -23,9 +19,7 @@ if {
 }
 
 # Check for required uppercase characters
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -38,9 +32,7 @@ if {
 }
 
 # Check for required lowercase characters
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -53,9 +45,7 @@ if {
 }
 
 # Check for required numbers
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -68,9 +58,7 @@ if {
 }
 
 # Check for required symbols
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -83,9 +71,7 @@ if {
 }
 
 # Check for password change allowance (conditional based on policy configuration)
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -99,9 +85,7 @@ if {
 }
 
 # Check maximum password age
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -114,9 +98,7 @@ if {
 }
 
 # Check password reuse prevention
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 

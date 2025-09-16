@@ -1,9 +1,7 @@
 package env0
 
 # Deny ALB listeners that use HTTP instead of HTTPS
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -21,9 +19,7 @@ if {
 }
 
 # Deny ALBs that only have HTTP listeners and no HTTPS listeners
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -57,9 +53,7 @@ if {
 }
 
 # Deny security groups that only allow HTTP traffic and not HTTPS
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -105,9 +99,7 @@ if {
 }
 
 # Deny ALB listeners that use outdated TLS security policies
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -131,9 +123,7 @@ if {
 }
 
 # Deny ALB listeners with TLS policy that doesn't meet minimum requirements
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -159,17 +149,13 @@ if {
 }
 
 # Helper function to check if actions include delete
-is_delete_action(actions) = true
-
-if {
+is_delete_action(actions) {
 	actions[_] == "delete"
 }
 
 # Helper function to determine if a TLS policy meets minimum requirements
 # This is a simplified version - in practice, you might want more sophisticated policy comparison
-is_acceptable_tls_policy(current_policy, min_policy) = true
-
-if {
+is_acceptable_tls_policy(current_policy, min_policy) {
 	# List of acceptable TLS policies in order of security (most secure first)
 	acceptable_policies := [
 		"ELBSecurityPolicy-TLS13-1-2-2021-06",
@@ -187,12 +173,8 @@ if {
 }
 
 # Helper function to find policy index in acceptable policies list
-policy_index(policy, policies) := index
-
-if {
+policy_index(policy, policies) := index {
 	policies[index] == policy
-} else = 999 {
-	true
-}
+} else = 999
 
 # Return high index for unknown policies (treated as less secure)

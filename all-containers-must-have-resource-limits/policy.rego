@@ -1,9 +1,7 @@
 package env0
 
 # Check containers in kubernetes_deployment resources
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_deployment"
 	container := r.change.after.spec.template.spec.container[_]
@@ -11,9 +9,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_deployment"
 	container := r.change.after.spec[_].template.spec.container[_]
@@ -21,9 +17,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_deployment"
 	container := r.change.after.spec.template.spec[_].container[_]
@@ -31,9 +25,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_deployment"
 	container := r.change.after.spec[_].template[_].spec.container[_]
@@ -41,9 +33,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_deployment"
 	container := r.change.after.spec[_].template[_].spec[_].container[_]
@@ -52,9 +42,7 @@ if {
 }
 
 # Check containers in kubernetes_manifest resources - template specs
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.template.spec.containers[_]
@@ -62,9 +50,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec[_].template.spec.containers[_]
@@ -72,9 +58,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.template.spec[_].containers[_]
@@ -82,9 +66,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec[_].template[_].spec.containers[_]
@@ -92,9 +74,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec[_].template.spec[_].containers[_]
@@ -102,9 +82,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec[_].template[_].spec[_].containers[_]
@@ -113,9 +91,7 @@ if {
 }
 
 # Check containers in kubernetes_manifest resources - direct specs (Pods)
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.containers[_]
@@ -123,9 +99,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec[_].containers[_]
@@ -134,9 +108,7 @@ if {
 }
 
 # Check containers in kubernetes_manifest resources - CronJob jobTemplates
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.jobTemplate.spec.template.spec.containers[_]
@@ -144,9 +116,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec[_].jobTemplate.spec.template.spec.containers[_]
@@ -154,9 +124,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.jobTemplate[_].spec.template.spec.containers[_]
@@ -164,9 +132,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.jobTemplate.spec[_].template.spec.containers[_]
@@ -174,9 +140,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.jobTemplate.spec.template[_].spec.containers[_]
@@ -184,9 +148,7 @@ if {
 	msg := sprintf("Container '%s' must have resource limits defined.", [container.name])
 }
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "kubernetes_manifest"
 	container := r.change.after.manifest.spec.jobTemplate.spec.template.spec[_].containers[_]

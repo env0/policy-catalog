@@ -1,16 +1,12 @@
 package env0
 
 # Helper function to check if actions include delete
-is_delete_action(actions) = true
-
-if {
+is_delete_action(actions) {
 	actions[_] == "delete"
 }
 
 # Deny EC2 instances that are not explicitly placed in a custom VPC
-deny[msg]
-
-if {
+deny[msg] {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 

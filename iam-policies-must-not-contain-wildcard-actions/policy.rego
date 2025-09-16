@@ -1,8 +1,6 @@
 package env0
 
-deny[msg]
-
-if {
+deny[msg] {
 	r := input.plan.resource_changes[_]
 	r.type == "aws_iam_policy"
 	doc := json.unmarshal(r.change.after.policy)

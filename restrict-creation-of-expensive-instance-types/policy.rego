@@ -1,8 +1,6 @@
 package env0
 
-deny[msg]
-
-if {
+deny[msg] {
 	pattern := input.policyData.disallowed_patterns[_]
 	r := input.plan.resource_changes[_]
 	r.type == "aws_instance"
