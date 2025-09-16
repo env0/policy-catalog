@@ -1,5 +1,7 @@
 package env0.policy
 
+import rego.v1
+
 # Check minimum password length
 deny[msg] {
     r := input.plan.resource_changes[_];
