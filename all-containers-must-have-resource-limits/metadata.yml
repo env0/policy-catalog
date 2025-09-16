@@ -1,5 +1,6 @@
 name: "All Containers Must Have Resource Limits"
 description: "Ensures that all containers in Kubernetes workloads have CPU and memory limits set, preventing resource contention and ensuring cluster stability."
+explanation: "Maintain stable application performance by preventing resource starvation. Ensures fair resource allocation and cost predictability."
 categories:
   - "Cost"
 tags:

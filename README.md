@@ -22,6 +22,7 @@ A YAML file that contains metadata and optional configuration for the policy.
 **Fields:**
 - **name**: Friendly name of the policy template.
 - **description**: Explanation of what the policy does.
+- **explanation**: User-friendly benefit description explaining the value proposition and what users gain by using this policy.
 - **categories** *(optional)*: Category of the policy. Supported categories: `Security`, `Networking`, `IAM`, `Compliance`, `Cost`, `Performance`.
 - **tags** *(optional)*: Cloud resources or concepts targeted by the policy.
 - **cloudProvider** *(optional)*: Relevant cloud provider (`aws`, `gcp`, `azure`, `oci`). Leave blank for multi-cloud.
@@ -31,6 +32,7 @@ A YAML file that contains metadata and optional configuration for the policy.
 ```yaml
 name: "Deny Public S3 Buckets"
 description: "Ensures that S3 buckets are not publicly accessible."
+explanation: "Prevent accidental data leaks by blocking public access to storage buckets. Keeps your sensitive data private by default."
 categories:
   - "security"
 tags:

@@ -1,5 +1,6 @@
 name: "Prohibit Use of Default VPC"
 description: "Discourages use of the default VPC to promote intentional, segmented network design."
+explanation: "Enforce secure network architecture by requiring custom VPCs. Improves network isolation and security posture."
 categories:
   - "Security"
   - "Networking"

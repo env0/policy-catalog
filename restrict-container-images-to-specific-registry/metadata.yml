@@ -1,5 +1,6 @@
 name: "Restrict Container Images to a Specific Registry"
 description: "A supply chain security measure that ensures container images are only pulled from trusted, approved registries."
+explanation: "Prevent supply chain attacks by enforcing trusted image sources. Ensures only vetted, secure containers run in your environment."
 categories:
   - "Security"
 tags:

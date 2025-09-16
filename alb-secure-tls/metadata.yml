@@ -1,5 +1,6 @@
 name: "ALB Secure TLS Policy"
 description: "Mandates that Application Load Balancers use a modern TLS policy, disabling outdated and insecure ciphers."
+explanation: "Ensure secure connections by enforcing modern encryption standards. Protects data in transit and prevents exploitation of weak ciphers."
 categories:
   - "Security"
   - "Networking"

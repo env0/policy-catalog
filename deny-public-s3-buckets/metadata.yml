@@ -1,5 +1,6 @@
 name: "Deny Public S3 Buckets"
 description: "Comprehensive S3 public access prevention - denies public ACLs, public bucket policies, and ensures all public access block settings are enabled."
+explanation: "Prevent accidental data leaks by blocking public access to storage buckets. Keeps your sensitive data private by default."
 categories:
   - "Security"
   - "Networking"

@@ -1,5 +1,6 @@
 name: "Restrict Creation of Expensive Instance Types"
 description: "Prevents accidental or unauthorized provisioning of high-cost instance types, helping to control cloud spend."
+explanation: "Control cloud costs by preventing accidental deployment of expensive resources. Keeps your budget on track."
 categories:
   - "Cost"
   - "Governance"
