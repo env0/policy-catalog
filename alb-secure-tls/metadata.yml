@@ -1,0 +1,12 @@
+name: "ALB Secure TLS Policy"
+description: "Mandates that Application Load Balancers use a modern TLS policy, disabling outdated and insecure ciphers."
+categories:
+  - "Security"
+  - "Networking"
+tags:
+  - "AWS"
+  - "ALB"
+  - "TLS"
+  - "LoadBalancer"
+cloudProvider: "aws"
+terraformVersions: "> 4.0.0"
