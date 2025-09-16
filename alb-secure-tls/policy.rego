@@ -1,9 +1,9 @@
 package env0
 
-import rego.v1
-
 # Deny ALB listeners that use HTTP instead of HTTPS
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -21,7 +21,9 @@ deny[msg] if {
 }
 
 # Deny ALBs that only have HTTP listeners and no HTTPS listeners
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -55,7 +57,9 @@ deny[msg] if {
 }
 
 # Deny security groups that only allow HTTP traffic and not HTTPS
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -101,7 +105,9 @@ deny[msg] if {
 }
 
 # Deny ALB listeners that use outdated TLS security policies
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -125,7 +131,9 @@ deny[msg] if {
 }
 
 # Deny ALB listeners with TLS policy that doesn't meet minimum requirements
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -151,13 +159,17 @@ deny[msg] if {
 }
 
 # Helper function to check if actions include delete
-is_delete_action(actions) if {
+is_delete_action(actions) = true
+
+if {
 	actions[_] == "delete"
 }
 
 # Helper function to determine if a TLS policy meets minimum requirements
 # This is a simplified version - in practice, you might want more sophisticated policy comparison
-is_acceptable_tls_policy(current_policy, min_policy) if {
+is_acceptable_tls_policy(current_policy, min_policy) = true
+
+if {
 	# List of acceptable TLS policies in order of security (most secure first)
 	acceptable_policies := [
 		"ELBSecurityPolicy-TLS13-1-2-2021-06",
@@ -175,8 +187,12 @@ is_acceptable_tls_policy(current_policy, min_policy) if {
 }
 
 # Helper function to find policy index in acceptable policies list
-policy_index(policy, policies) := index if {
+policy_index(policy, policies) := index
+
+if {
 	policies[index] == policy
-} else := 999
+} else = 999 {
+	true
+}
 
 # Return high index for unknown policies (treated as less secure)

@@ -1,7 +1,5 @@
 package env0
 
-import rego.v1
-
 # Check for public ACLs on aws_s3_bucket_acl resource
 deny[msg] if {
 	rc := input.plan.resource_changes[_]
@@ -26,7 +24,7 @@ deny[msg] if {
 	json.unmarshal(a.policy, pol)
 	st := pol.Statement[_]
 	lower(st.Effect) == "allow"
-	is_public(st.Principal)
+	wildcard_principal_check(st.Principal)
 	msg := sprintf("%s: bucket policy allows public access", [rc.address])
 }
 
@@ -59,14 +57,14 @@ deny[msg] if {
 	msg := sprintf("%s: S3 bucket must enable 'restrict_public_buckets'", [r.address])
 }
 
-is_public(p) if p == "*"
+wildcard_principal_check(prin) if prin == "*"
 
-else if {
-	is_object(p)
-	p.AWS == "*"
+wildcard_principal_check(prin) if {
+	is_object(prin)
+	prin.AWS == "*"
 }
 
-else if {
-	is_array(p)
-	p[_] == "*"
+wildcard_principal_check(prin) if {
+	is_array(prin)
+	prin[_] == "*"
 }

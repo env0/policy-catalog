@@ -1,8 +1,8 @@
 package env0
 
-import rego.v1
+deny[msg]
 
-deny[msg] if {
+if {
 	pattern := input.policyData.disallowed_patterns[_]
 	r := input.plan.resource_changes[_]
 	r.type == "aws_instance"

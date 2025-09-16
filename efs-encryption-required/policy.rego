@@ -1,14 +1,16 @@
 package env0
 
-import rego.v1
-
 # Helper function to check if actions include delete
-is_delete_action(actions) if {
+is_delete_action(actions) = true
+
+if {
 	actions[_] == "delete"
 }
 
 # Deny EFS file systems that are not encrypted
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 

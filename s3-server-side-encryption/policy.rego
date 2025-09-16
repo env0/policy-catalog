@@ -1,9 +1,9 @@
 package env0
 
-import rego.v1
-
 # Deny S3 buckets without server-side encryption configuration
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -20,7 +20,9 @@ deny[msg] if {
 }
 
 # Deny deletion of server-side encryption configurations when bucket is not being deleted
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -36,7 +38,9 @@ deny[msg] if {
 }
 
 # Deny server-side encryption configurations with null or missing algorithm
-deny[msg] if {
+deny[msg]
+
+if {
 	# Skip policy validation for destroy operations
 	input.deploymentRequest.type != "destroy"
 
@@ -56,7 +60,9 @@ deny[msg] if {
 }
 
 # Helper function to check if a bucket has encryption configuration
-has_encryption_config(bucket_address) if {
+has_encryption_config(bucket_address) = true
+
+if {
 	rc := input.plan.resource_changes[_]
 	rc.type == "aws_s3_bucket_server_side_encryption_configuration"
 
@@ -76,12 +82,16 @@ has_encryption_config(bucket_address) if {
 }
 
 # Helper function to check if actions include delete
-is_delete_action(actions) if {
+is_delete_action(actions) = true
+
+if {
 	actions[_] == "delete"
 }
 
 # Helper function to check if a bucket is being deleted
-is_bucket_being_deleted(bucket_name) if {
+is_bucket_being_deleted(bucket_name) = true
+
+if {
 	rc := input.plan.resource_changes[_]
 	rc.type == "aws_s3_bucket"
 	is_delete_action(rc.change.actions)
@@ -90,7 +100,9 @@ is_bucket_being_deleted(bucket_name) if {
 }
 
 # Helper function to extract bucket name from resource address
-extract_bucket_name(address) := name if {
+extract_bucket_name(address) := name
+
+if {
 	# Handle both bucket and encryption config addresses
 	parts := split(address, ".")
 	name := parts[count(parts) - 1]
