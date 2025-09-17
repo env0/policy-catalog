@@ -1,13 +1,10 @@
-name: "Enforce Comprehensive IAM Password Policy Security"
-description: "Ensures IAM password policies meet comprehensive security requirements including complexity, expiration, and reuse prevention for stronger user credentials."
-explanation: "Strengthen account security by enforcing strong passwords. Reduces risk of credential-based attacks and unauthorized access."
+name: "EFS File Systems Must Be Encrypted2222"
+description: "Requires that all Elastic File System (EFS) instances have encryption for data at rest enabled."
+explanation: "Secure your shared file storage with automatic encryption. Protects sensitive files from unauthorized access."
 categories:
   - "Security"
-  - "IAM"
   - "Compliance"
 tags:
-  - "IAM"
-  - "Password"
-  - "Security"
-  - "Compliance"
+  - "EFS"
+  - "Encryption"
 cloudProvider: "aws"
