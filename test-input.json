@@ -1,0 +1,18 @@
+{
+  "plan": {
+    "resource_changes": [
+      {
+        "type": "aws_ebs_volume",
+        "change": {
+          "actions": ["create"],
+          "after": {
+            "encrypted": false
+          }
+        }
+      }
+    ]
+  },
+  "deploymentRequest": {
+    "type": "create"
+  }
+}

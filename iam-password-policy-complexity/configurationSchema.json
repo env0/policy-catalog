@@ -1,37 +1,39 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IAM Password Policy Complexity Configuration",
   "type": "object",
-  "title": "IAM Password Policy Security Configuration",
-  "description": "Configuration schema for comprehensive IAM password policy security enforcement",
   "properties": {
     "min_length": {
-      "type": "integer",
       "title": "Minimum Password Length",
-      "description": "The minimum length required for passwords",
-      "minimum": 1,
-      "maximum": 128
-    },
-    "max_password_age": {
       "type": "integer",
-      "title": "Maximum Password Age (days)",
-      "description": "Maximum number of days a password can be used before it must be changed",
-      "minimum": 1,
-      "maximum": 1095
-    },
-    "min_password_reuse_prevention": {
-      "type": "integer",
-      "title": "Minimum Password Reuse Prevention",
-      "description": "Minimum number of previous passwords that cannot be reused",
-      "minimum": 1,
-      "maximum": 24
+      "description": "Minimum required password length",
+      "minimum": 8,
+      "maximum": 128,
+      "default": 12
     },
     "require_user_password_changes": {
-      "type": "boolean",
       "title": "Require User Password Changes",
-      "description": "Whether users must be allowed to change their passwords",
+      "type": "boolean",
+      "description": "Whether users must be allowed to change their own passwords",
       "default": true
+    },
+    "max_password_age": {
+      "title": "Maximum Password Age (days)",
+      "type": "integer",
+      "description": "Maximum number of days a password can be used before it must be changed",
+      "minimum": 1,
+      "maximum": 1095,
+      "default": 90
+    },
+    "min_password_reuse_prevention": {
+      "title": "Minimum Password Reuse Prevention",
+      "type": "integer",
+      "description": "Minimum number of previous passwords that cannot be reused",
+      "minimum": 1,
+      "maximum": 24,
+      "default": 5
     }
   },
-  "required": ["min_length", "max_password_age", "min_password_reuse_prevention", "require_user_password_changes"],
+  "required": ["min_length", "require_user_password_changes", "max_password_age", "min_password_reuse_prevention"],
   "additionalProperties": false
 }
