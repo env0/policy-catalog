@@ -1,7 +1,6 @@
 package env0
 
-# Threshold configured via input.policyData.maxCostIncrease
-maxCostIncrease := input.policyData.maxCostIncrease
+maxCostIncrease := input.policyConfiguration.maxCostIncrease
 monthlyDiff     := input.costEstimation.monthlyCostDiff
 
 # Deny if the cost increase is above the configured threshold.
