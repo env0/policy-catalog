@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Disallow Unrestricted SSH Ingress Configuration",
+  "type": "object",
+  "properties": {
+    "allowed_ssh_cidrs": {
+      "title": "Allowed SSH CIDR Blocks",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of CIDR blocks allowed for SSH access. Include '0.0.0.0/0' only if unrestricted SSH access is explicitly required.",
+      "examples": [
+        ["10.0.0.0/8", "192.168.0.0/16"],
+        ["203.0.113.0/24", "198.51.100.0/24"],
+        ["0.0.0.0/0"]
+      ],
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}

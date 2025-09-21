@@ -1,0 +1,10 @@
+name: "Disallow Unrestricted SSH Ingress"
+description: "Prevents exposing the SSH port (22) to the entire internet, a critical step to block brute-force attacks."
+explanation: "Protect your infrastructure from brute-force attacks by blocking SSH access from the open internet. Only allows SSH access from specified trusted networks, reducing attack surface and improving security posture."
+categories:
+  - "Security"
+  - "Networking"
+tags:
+  - "SSH"
+  - "Firewall"
+cloudProvider: "aws"
