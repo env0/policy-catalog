@@ -1,17 +1,19 @@
-package env0.policy
+package env0
 
-deny[msg] {
-    r := input.plan.resource_changes[_]
-    r.type == "aws_efs_file_system"
-    "create" in r.change.actions
-    r.change.after.encrypted != true
-    msg := "EFS file systems must be encrypted."
+# Helper function to check if actions include delete
+is_delete_action(actions) {
+	actions[_] == "delete"
 }
 
+# Deny EFS file systems that are not encrypted
 deny[msg] {
-    r := input.plan.resource_changes[_]
-    r.type == "aws_efs_file_system"
-    "update" in r.change.actions
-    r.change.after.encrypted != true
-    msg := "EFS file systems must be encrypted."
+	# Skip policy validation for destroy operations
+	input.deploymentRequest.type != "destroy"
+
+	r := input.plan.resource_changes[_]
+	r.type == "aws_efs_file_system"
+	not is_delete_action(r.change.actions)
+	r.change.after
+	r.change.after.encrypted != true
+	msg := "EFS file systems must be encrypted."
 }
