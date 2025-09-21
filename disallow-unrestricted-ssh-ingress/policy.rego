@@ -9,7 +9,7 @@ deny[msg] {
 	r.change.after.to_port >= 22
 	cidr := r.change.after.cidr_blocks[_]
 	cidr == "0.0.0.0/0"
-	not is_ssh_allowed_from_unrestricted_cidr()
+	not ssh_allowed_from_unrestricted_cidr
 	msg := sprintf("%s: Unrestricted SSH ingress from 0.0.0.0/0 is forbidden", [r.address])
 }
 
@@ -22,7 +22,7 @@ deny[msg] {
 	r.change.after.to_port >= 22
 	cidr := r.change.after.ipv6_cidr_blocks[_]
 	cidr == "::/0"
-	not is_ssh_allowed_from_unrestricted_cidr()
+	not ssh_allowed_from_unrestricted_cidr
 	msg := sprintf("%s: Unrestricted SSH ingress from ::/0 is forbidden", [r.address])
 }
 
@@ -35,7 +35,7 @@ deny[msg] {
 	rule.to_port >= 22
 	cidr := rule.cidr_blocks[_]
 	cidr == "0.0.0.0/0"
-	not is_ssh_allowed_from_unrestricted_cidr()
+	not ssh_allowed_from_unrestricted_cidr
 	msg := sprintf("%s: Unrestricted SSH ingress from 0.0.0.0/0 is forbidden", [r.address])
 }
 
@@ -48,17 +48,17 @@ deny[msg] {
 	rule.to_port >= 22
 	cidr := rule.ipv6_cidr_blocks[_]
 	cidr == "::/0"
-	not is_ssh_allowed_from_unrestricted_cidr()
+	not ssh_allowed_from_unrestricted_cidr
 	msg := sprintf("%s: Unrestricted SSH ingress from ::/0 is forbidden", [r.address])
 }
 
-# Helper function to check if SSH from unrestricted CIDR is explicitly allowed
-is_ssh_allowed_from_unrestricted_cidr() {
+# Helper rule to check if SSH from unrestricted CIDR is explicitly allowed
+ssh_allowed_from_unrestricted_cidr {
 	allowed_cidrs := input.policyData.allowed_ssh_cidrs[_]
 	allowed_cidrs == "0.0.0.0/0"
 }
 
-is_ssh_allowed_from_unrestricted_cidr() {
+ssh_allowed_from_unrestricted_cidr {
 	allowed_cidrs := input.policyData.allowed_ssh_cidrs[_]
 	allowed_cidrs == "::/0"
 }
