@@ -3,7 +3,6 @@ description: "Prevents accidental or unauthorized provisioning of high-cost inst
 explanation: "Control cloud costs by preventing accidental deployment of expensive resources. Keeps your budget on track."
 categories:
   - "Cost"
-  - "Governance"
 tags:
   - "EC2"
   - "VM"
