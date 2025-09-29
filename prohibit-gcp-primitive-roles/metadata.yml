@@ -1,0 +1,11 @@
+name: "Prohibit GCP Primitive Roles at Project Level"
+description: "Prevents assigning broad owner, editor, or viewer roles at the project level to encourage fine-grained permissions."
+categories:
+  - "Security"
+  - "IAM"
+tags:
+  - "GCP"
+  - "IAM"
+  - "Security"
+  - "Roles"
+cloudProvider: "gcp"
