@@ -1,5 +1,6 @@
 name: "Prohibit GCP Primitive Roles at Project Level"
 description: "Prevents assigning broad owner, editor, or viewer roles at the project level to encourage fine-grained permissions."
+explanation: "Enforce the principle of least privilege by preventing overly broad primitive roles. Reduces security risk by encouraging specific, fine-grained permissions instead of blanket access."
 categories:
   - "Security"
   - "IAM"
